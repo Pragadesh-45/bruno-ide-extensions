@@ -20,7 +20,7 @@ class BrunoPanel {
     const panel = vscode.window.createWebviewPanel(
       BrunoPanel.viewType,
       "Bruno",
-      vscode.ViewColumn.Beside,
+      column,
       {
         enableScripts: true,
         retainContextWhenHidden: true,
