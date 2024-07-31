@@ -14,5 +14,6 @@ const App = () => (
   </Provider>
 );
 
-ReactDOM.render(<App />, document.getElementById('root'));
-
+// Create a root and render the app
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
