@@ -96,7 +96,7 @@ class BrunoPanel {
         result,
       });
     } catch (err) {
-      this.panel.webview.html = `<html><body>I'm changing this bro: Error executing Bru file: ${err.message}</body></html>`;
+      this.panel.webview.html = `<html><body>Error executing Bru file: ${err.message}</body></html>`;
     }
   }
 }
