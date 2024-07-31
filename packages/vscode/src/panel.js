@@ -53,6 +53,11 @@ class BrunoPanel {
   async update() {
     const editor = vscode.window.activeTextEditor;
 
+    if (!editor) {
+      this.panel.webview.html = `<html><body>No active editor found</body></html>`;
+      return;
+    }
+
     const document = editor.document;
     const text = document.getText();
     const filename = document.uri.fsPath;
