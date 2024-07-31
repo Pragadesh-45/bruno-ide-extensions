@@ -17,9 +17,7 @@
   },
   "icon": "icon.png",
   "main": "./src/extension.js",
-  "activationEvents": [
-    "onCommand:extension.runBrunoRequest"
-  ],
+  "activationEvents": [],
   "files.exclude": {
     "**/node_modules": true
   },

@@ -1,18 +1,18 @@
-const vscode = require('vscode');
-const BrunoPanel = require('./panel');
+const vscode = require("vscode");
+const BrunoPanel = require("./panel");
 
 function activate(context) {
-	console.log('Congratulations, your extension "bruno" is now active!');
+  console.log('Congratulations, your extension "bruno" is now active!');
 
   context.subscriptions.push(
-    vscode.commands.registerCommand('extension.runBrunoRequest', () => {
+    vscode.commands.registerCommand("extension.runBrunoRequest", () => {
       BrunoPanel.createOrShow(context);
     })
   );
 
   const brunoPanelProvider = {
     provideWebviewPanel: (panel, _context, _token) => {
-      if (panel.viewType !== 'Bruno') {
+      if (panel.viewType !== "Bruno") {
         return;
       }
 
@@ -21,10 +21,13 @@ function activate(context) {
   };
 
   context.subscriptions.push(
-    vscode.window.registerWebviewPanelSerializer('BrunoPanel', brunoPanelProvider)
+    vscode.window.registerWebviewPanelSerializer(
+      "BrunoPanel",
+      brunoPanelProvider
+    )
   );
 }
 
 module.exports = {
-  activate
+  activate,
 };

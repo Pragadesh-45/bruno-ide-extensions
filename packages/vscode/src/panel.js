@@ -1,7 +1,7 @@
-const vscode = require('vscode');
-const path = require('path');
-const { bruToJson } = require('./utils/bru');
-const { runSingleRequest } = require('./runner/run-single-request');
+const vscode = require("vscode");
+const path = require("path");
+const { bruToJson } = require("./utils/bru");
+const { runSingleRequest } = require("./runner/run-single-request");
 
 class BrunoPanel {
   /**
@@ -19,12 +19,14 @@ class BrunoPanel {
 
     const panel = vscode.window.createWebviewPanel(
       BrunoPanel.viewType,
-      'Bruno',
+      "Bruno",
       vscode.ViewColumn.Beside,
       {
         enableScripts: true,
         retainContextWhenHidden: true,
-        localResourceRoots: [vscode.Uri.file(path.join(context.extensionPath, 'out'))]
+        localResourceRoots: [
+          vscode.Uri.file(path.join(context.extensionPath, "out")),
+        ],
       }
     );
 
@@ -59,7 +61,7 @@ class BrunoPanel {
     const envVars = {};
 
     const scriptUri = this.panel.webview.asWebviewUri(
-      vscode.Uri.joinPath(this.context.extensionUri, 'out', 'bruno', 'index.js')
+      vscode.Uri.joinPath(this.context.extensionUri, "out", "bruno", "index.js")
     );
 
     try {
@@ -80,21 +82,26 @@ class BrunoPanel {
         </html>
       `;
 
-      const result = await runSingleRequest(filename, bruJson, collectionPath, collectionVariables, envVars);
+      const result = await runSingleRequest(
+        filename,
+        bruJson,
+        collectionPath,
+        collectionVariables,
+        envVars
+      );
       console.log(result);
 
       this.panel.webview.postMessage({
-        command: 'runResult',
+        command: "runResult",
         result,
       });
-
     } catch (err) {
-      this.panel.webview.html = `<html><body>Error executing Bru file: ${err.message}</body></html>`;
+      this.panel.webview.html = `<html><body>I'm changing this bro: Error executing Bru file: ${err.message}</body></html>`;
     }
   }
 }
 
-BrunoPanel.viewType = 'BrunoPanel';
+BrunoPanel.viewType = "BrunoPanel";
 
 /**
  * @type {BrunoPanel | undefined}
