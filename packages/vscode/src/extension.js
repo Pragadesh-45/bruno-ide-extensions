@@ -17,6 +17,8 @@ function activate(context) {
       }
 
       const brunoPanel = new BrunoPanel(panel, context);
+
+      return brunoPanel;
     },
   };
 
